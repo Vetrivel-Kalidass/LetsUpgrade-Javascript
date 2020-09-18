@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartoon Heros</title>
+    <style>
+        .head{
+            background-color: dimgray;
+            margin-top: 3%;
+            margin-left: 3%;
+            margin-right: 3%;
+        }
+        
+        .form{
+            margin-top: 2%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        #heroTable{
+        width: 80%;
+        margin-left: 10%;
+        color: white;
+        }
+        h1{
+            text-align: center;
+            color: floralwhite;
+        }
+        input{
+            text-indent: 20px;
+            margin-left: 2%;
+            text-indent: 20%;
+        }
+
+      th,
+      td {
+        height: 40px;
+        text-align: center;
+        padding: 5px;
+      }
+
+      .modal {
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        display: none;
+      }
+
+      .modalchild {
+        height: 200px;
+        width: 70%;
+        background-color: white;
+        margin-left: 15%;
+        margin-top: 100px;
+        display: inline-block;
+        padding: 30px;
+      }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h1>Cartoon Hero Recuirement</h1>
+    </div>
+    <div class="modal" onclick="hideModal(event)">
+      <div class="modalchild">
+        <div class="form">
+          <form onsubmit="updatehero(event)">
+            <input type="text" required placeholder="Name" id="upname" />
+            <input type="number" required placeholder="Age" id="upage" />
+            <input type="text" required placeholder="city" id="upcity" />
+            <input type="text" required placeholder="salary" id="upsalary" />
+            <button type="submit">Update Superhero</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="form">
+        <form onsubmit="addregisterHero(event)">
+            <label>Register as Hero</label>
+            <input type="text" required placeholder="name" id="name">
+            <input type="number" required placeholder="age" id="age">
+            <input type="text" required placeholder="city" id="city">
+            <input type="text" required placeholder="salary" id="salary">
+            <button type="submit">Register Hero</button>
+        </form>
+    </div>
+    <div class="form">
+        <input type="text" placeholder="search by name or city" onkeyup="searchs()" id="search">
+    </div>
+
+    <div class="head">
+        <table id="heroTable" border=1 cellspacing=0px>
+            <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>city</th>
+                    <th>Salary</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="tData">
+            </tbody>
+        </table>
+    </div>
+    <script src="ans1.js"></script>
+</body>
+</html>
