@@ -1,51 +1,48 @@
 window.onload=function(){
     let busArr1 = [
         {
-            name: "haii",
-            source: "vsi",
+            name: "APR travels",
+            source: "vandavasi",
             destination: "arni",
             number: 3,
-            passengerCapacity: 4,
+            capacity: 50,
         }
     ];
 
-    if(localStorage.getItem("busArr")==null){
+    if(localStorage.getItem("busArr1")==null){
         let busStr=JSON.stringify(busArr1);
-
-        console.log(busStr);
-        localStorage.setItem("busArr", busArr1);
+        localStorage.setItem("busArr1", busStr);
     }
 
 };
-function display(bus_data=undefined) {
+
+function display(busDat=undefined) {
     let dispBus;
     let arr='';
-    if(bus_data==undefined){
-    dispBus=JSON.parse(localStorage.getItem("busArr"));
+    if(busDat==undefined){
+    dispBus=JSON.parse(localStorage.getItem("busArr1"));
     }
     else{
-    dispBus = bus_data;
+    dispBus = busDat;
     }
   
-    dispBus.forEach(function(element, index) {
+    dispBus.forEach(function(elem, index) {
       let row = `
       <tr>
       <td>${index+1}</td>
-      <td>${element.name}</td>
-      <td>${element.source}</td>
-      <td>${element.destination}</td>
-      <td>${element.number}</td>
-      <td>${element.passengerCapacity}</td>
+      <td>${elem.name}</td>
+      <td>${elem.source}</td>
+      <td>${elem.destination}</td>
+      <td>${elem.number}</td>
+      <td>${elem.capacity}</td>
       <td><button onclick="deleteR(${index})" class="del">delete</button>
       </td>
       </tr>`;
-        arr+=(row);
+        arr += row;
         
         
     });
 
-    
-    console.log(typeof(dispBus));
     document.getElementById("tableDat").innerHTML = arr;
 }
 
@@ -54,22 +51,22 @@ function insertB(e) {
     let bus = {};
     let name = document.getElementById("name").value;
     let source = document.getElementById("source").value;
-    let dest = document.getElementById("dest").value;
-    let number = document.getElementById("number").value;
-    let passcap = document.getElementById("passcap").value;
+    let dest = document.getElementById("destin").value;
+    let number = document.getElementById("bno").value;
+    let passcap = document.getElementById("pass").value;
  
    bus.name = name;
    bus.source=source;
    bus.destination=dest;
    bus.number=number;
-   bus.passengerCapacity=passcap;
+   bus.capacity=passcap;
 
-   let newBus=JSON.parse(localStorage.getItem("busArr"));
+   let newBus=JSON.parse(localStorage.getItem("busArr1"));
    newBus.push(bus);
    strbuses=JSON.stringify(newBus);
-   localStorage.setItem("busArr",strbuses);
+   localStorage.setItem("busArr1",strbuses);
 
-    let newbus1 = JSON.parse(localStorage.getItem("busArr"));
+    let newbus1 = JSON.parse(localStorage.getItem("busArr1"));
     display(newbus1);
     
 
@@ -80,20 +77,14 @@ function insertB(e) {
 
 display();
 
-function search() {
+function searchs() {
     let srch = document.getElementById("search").value;
 
-    let arrbus= JSON.parse(localStorage.getItem("busArr"));
+    let arrbus= JSON.parse(localStorage.getItem("busArr1"));
 
-    let filtarr = arrbus.filter(function (element) {
-        if (element.source.indexOf(srch) != -1) {
-            return element.source.indexOf(srch) != -1;
-        }
-        else if (element.destination.indexOf(srch) != -1) {
-            return element.destination.indexOf(srch) != -1;
-
-
-        };
+    let filtarr = arrbus.filter(function (elem) {
+        return (elem.name.toUpperCase().indexOf(srch.toUpperCase()) != -1)||
+        (elem.city.toUpperCase().indexOf(srch.toUpperCase()) != -1);
 
     })
     display(filtarr);
@@ -101,10 +92,10 @@ function search() {
 }
 
 function deleteR(index){
-    let buses = JSON.parse(localStorage.getItem("busArr"));
+    let buses = JSON.parse(localStorage.getItem("busArr1"));
     buses.splice(index, 1);
     display(buses);
-    localStorage.setItem("busArr", JSON.stringify(buses));
+    localStorage.setItem("busArr1", JSON.stringify(buses));
 
 
 }
