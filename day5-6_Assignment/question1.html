@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartoon Heros</title>
     <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      .upheros {
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        display: none;
+      }
+
+      .upform {
+        height: 200px;
+        width: 70%;
+        background-color: white;
+        margin-left: 15%;
+        margin-top: 100px;
+        display: inline-block;
+        padding: 30px;
+      }
         .head{
             background-color: dimgray;
             margin-top: 3%;
@@ -32,6 +53,12 @@
             margin-left: 2%;
             text-indent: 20%;
         }
+        button{
+
+          text-indent: 20px;
+            margin-left: 2%;
+            text-indent: 20%;
+        }
 
       th,
       td {
@@ -40,38 +67,21 @@
         padding: 5px;
       }
 
-      .modal {
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
-        position: fixed;
-        display: none;
-      }
-
-      .modalchild {
-        height: 200px;
-        width: 70%;
-        background-color: white;
-        margin-left: 15%;
-        margin-top: 100px;
-        display: inline-block;
-        padding: 30px;
-      }
     </style>
 </head>
 <body>
     <div class="head">
         <h1>Cartoon Hero Recuirement</h1>
     </div>
-    <div class="modal" onclick="hideModal(event)">
-      <div class="modalchild">
+    <div class="upheros" onclick="hide(event)">
+      <div class="upform">
         <div class="form">
-          <form onsubmit="updatehero(event)">
-            <input type="text" required placeholder="Name" id="upname" />
-            <input type="number" required placeholder="Age" id="upage" />
-            <input type="text" required placeholder="city" id="upcity" />
-            <input type="text" required placeholder="salary" id="upsalary" />
-            <button type="submit">Update Superhero</button>
+          <form onsubmit="uphero(event)">
+            <input type="text" required placeholder="Name" id="uname" />
+            <input type="number" required placeholder="Age" id="uage" />
+            <input type="text" required placeholder="city" id="ucity" />
+            <input type="text" required placeholder="salary" id="usalary" />
+            <button type="submit">Update</button>
           </form>
         </div>
       </div>
@@ -82,12 +92,12 @@
             <input type="text" required placeholder="name" id="name">
             <input type="number" required placeholder="age" id="age">
             <input type="text" required placeholder="city" id="city">
-            <input type="text" required placeholder="salary" id="salary">
+            <input type="text" required placeholder="salary" id="salary" value="$">
             <button type="submit">Register Hero</button>
         </form>
     </div>
     <div class="form">
-        <input type="text" placeholder="search by name or city" onkeyup="searchs()" id="search">
+        <input type="text" placeholder="search by name/city" onkeyup="searchs()" id="searchs">
     </div>
 
     <div class="head">
