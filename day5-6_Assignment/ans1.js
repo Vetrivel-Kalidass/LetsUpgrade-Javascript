@@ -31,7 +31,7 @@ function display(heroArr) {
       <td>${hero.salary}</td>
       <td>
       <button onclick='deletehero(${index})'>delete</button>
-      <button onclick='showModal(${index})'>update</button>
+      <button onclick='showhero(${index})'>update</button>
       </td>
       </tr>`;
   
@@ -50,10 +50,10 @@ function display(heroArr) {
     let age = document.getElementById("age").value;
     let city = document.getElementById("city").value;
     let salary = document.getElementById("salary").value;
-    superhero.name = name;
-    superhero.age = Number(age);
-    superhero.city = city;
-    superhero.salary = salary;
+    CartHero.name = name;
+    CartHero.age = Number(age);
+    CartHero.city = city;
+    CartHero.salary = salary;
   
     cartoonHeros.push(CartHero);
   
@@ -62,19 +62,15 @@ function display(heroArr) {
     document.getElementById("name").value = "";
     document.getElementById("age").value = "";
     document.getElementById("city").value = "";
-    document.getElementById("salary").value = "";
+    document.getElementById("salary").value = "$";
   }
   
   function searchs() {
-    let searchValue = document.getElementById("searchName").value;
+    let s = document.getElementById("searchs").value;
   
     let newdata = cartoonHeros.filter(function (cartoonheros) {
-      return (
-        cartoonheros.name.toUpperCase().indexOf(searchValue.toUpperCase()) != -1
-      );
-      return (
-        cartoonheros.city.toUpperCase().indexOf(searchValue.toUpperCase()) != -1
-      );
+      return (cartoonheros.name.toUpperCase().indexOf(s.toUpperCase()) != -1)||
+      (cartoonheros.city.toUpperCase().indexOf(s.toUpperCase()) != -1);
     });
   
     display(newdata);
@@ -85,48 +81,46 @@ function display(heroArr) {
     display(cartoonHeros);
   }
   
-  let updateIndex;
+  let uIndex;
   
   function copyhero(index) {
-    updateIndex = index;
-    let superhero = cartoonHeros[index];
+    uIndex = index;
+    let sup = cartoonHeros[index];
   
-    document.getElementById("upname").value = superhero.name;
-    document.getElementById("upage").value = superhero.age;
-    document.getElementById("upcity").value = superhero.city;
-    document.getElementById("upsalary").value = superhero.salary;
+    document.getElementById("uname").value = sup.name;
+    document.getElementById("uage").value = sup.age;
+    document.getElementById("ucity").value = sup.city;
+    document.getElementById("usalary").value = sup.salary;
   }
   
-  function updatehero(e) {
+  function uphero(e) {
     e.preventDefault();
-    let superhero = cartoonHeros[updateIndex];
-    console.log(superhero);
-    let name = document.getElementById("upname").value;
-    let age = document.getElementById("upage").value;
-    let city = document.getElementById("upcity").value;
-    let salary = document.getElementById("upsalary").value;
-    superhero.name = name;
-    superhero.age = Number(age);
-    superhero.city = city;
-    superhero.salary = salary;
-    console.log(superhero);
+    let hero = cartoonHeros[uIndex];
+    let name = document.getElementById("uname").value;
+    let age = document.getElementById("uage").value;
+    let city = document.getElementById("ucity").value;
+    let salary = document.getElementById("usalary").value;
+    hero.name = name;
+    hero.age = Number(age);
+    hero.city = city;
+    hero.salary = salary;
   
     display(cartoonHeros);
     
-    let modal = document.getElementsByClassName("modal")[0];
-    modal.style.display = "none";
+    let m = document.getElementsByClassName("upheros")[0];
+    m.style.display = "none";
   }
   
-  function showModal(index) {
-    let modal = document.getElementsByClassName("modal")[0];
-    modal.style.display = "block";
+  function showhero(index) {
+    let m = document.getElementsByClassName("upheros")[0];
+    m.style.display = "block";
   
     copyhero(index);
   }
   
-  function hideModal(event) {
-    if (event.target.className == "modal") {
-      let modal = document.getElementsByClassName("modal")[0];
-      modal.style.display = "none";
+  function hide(event) {
+    if (event.target.className == "upheros") {
+      let m = document.getElementsByClassName("upheros")[0];
+      m.style.display = "none";
     }
   }
