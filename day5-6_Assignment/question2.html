@@ -12,7 +12,7 @@
 
         }
 
-        .tableBg {
+        .win {
             font-family: Cambria, Cochin, serif;
             margin-top: 5%;
             height: 10%;
@@ -24,7 +24,7 @@
 
         }
 
-        .tble {
+        .tab {
             width: 80%;
             margin-left: 10%;
             margin-top: 0.5%;
@@ -57,34 +57,39 @@
             padding: 0.7%;
             height: 40%px;
             width: 100px;
+        }
+        button{
 
+            padding: 0.7%;
+            height: 40%px;
+            width: 100px;
         }
 
     </style>
 </head>
 
 <body>
-    <h1>Bus Managment System!</h1>
+    <div class="win">
+    <h1>BMS - Bus Management System</h1>
 
-    <div class="tableBg">
-        <h1>buses</h1>
+    <div>
         <div class="data">
           
              <form onsubmit="insertB(event)">
             <input required type="text" placeholder="Name" id="name" />
             <input required type="text" placeholder="Source" id="source" />
-            <input required type="text" placeholder="Destination" id="dest" />
-            <input required type="number" placeholder=" bus Number" id="number"/>
-            <input required type="number" placeholder="passenger capacity" id="passcap" />
+            <input required type="text" placeholder="Destination" id="destin" />
+            <input required type="number" placeholder=" bus Number" id="bno"/>
+            <input required type="number" placeholder="passenger capacity" id="pass" />
             <button class="ins" required >Add Bus</button>
             </form>
 
         </div>
 
         <div class="search">
-            <input type="text" placeholder="search here..." onkeyup="search()" id="search">
+            <input type="text" placeholder="search here..." onkeyup="searchs()" id="search">
         </div>
-        <table border="1" class='tble' cellspacing=0>
+        <table border="1" class='tab' cellspacing=0>
             <thead>
                 <tr>
                     <th >Slno</th>
@@ -101,6 +106,7 @@
             </tbody>
         </table>
     </div>
+</div>
     <script src="an2.js"></script>
 </body>
 
