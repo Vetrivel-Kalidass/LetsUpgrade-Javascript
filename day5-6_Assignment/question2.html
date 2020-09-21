@@ -13,13 +13,12 @@
         }
 
         .win {
-            font-family: Cambria, Cochin, serif;
             margin-top: 5%;
             height: 10%;
             width: 80%;
             margin-left: 10%;
             margin-right: 10%;
-            background-color:aquamarine;
+            background-color: mediumslateblue;
             padding-bottom: 10%;
 
         }
@@ -52,10 +51,14 @@
             margin-top: 0.5%;
             margin-bottom: 2%;
         }
+        .search{
+            margin-left: 60%;
+            width: 100%;
 
+        }
         input {
             padding: 0.7%;
-            height: 40%px;
+            height: 40%;
             width: 100px;
         }
         button{
@@ -74,14 +77,14 @@
 
     <div>
         <div class="data">
-          
-             <form onsubmit="insertB(event)">
+        
+            <form onsubmit="insertB(event)">
             <input required type="text" placeholder="Name" id="name" />
             <input required type="text" placeholder="Source" id="source" />
             <input required type="text" placeholder="Destination" id="destin" />
             <input required type="number" placeholder=" bus Number" id="bno"/>
             <input required type="number" placeholder="passenger capacity" id="pass" />
-            <button class="ins" required >Add Bus</button>
+            <button class="ins" >Add Bus</button>
             </form>
 
         </div>
@@ -101,8 +104,8 @@
                     <th>operation</th>
                 </tr>
             </thead>
-            <tbody id="tableDat">
-             
+            <tbody class="tableDat">
+            
             </tbody>
         </table>
     </div>
