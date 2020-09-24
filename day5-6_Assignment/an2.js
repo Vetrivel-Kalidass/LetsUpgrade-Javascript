@@ -1,74 +1,72 @@
+window.onload=function(){
+    let busArr1 = [{}];
 
-
-    let busArr1;
-
-window.onload = function(){
-    if((localStorage.getItem("busArr1")) == undefined)
-    {
-        console.log("if");
-        localStorage.setItem("busArr1", JSON.stringify(busArr1));
+    if(localStorage.getItem("busArr1")==null){
+        let busStr=JSON.stringify(busArr1);
+        localStorage.setItem("busArr1", busStr);
     }
-}
 
-function display(busDat) {
-    let dispBus= "";
-    let arr;
-    if(busDat == undefined){
-        arr = JSON.parse(localStorage.getItem("busArr1"));
+};
+
+function display(busDat=undefined) {
+    let dispBus;
+    let arr='';
+    if(busDat==undefined){
+    dispBus=JSON.parse(localStorage.getItem("busArr1"));
     }
     else{
-    arr = busDat;
+    dispBus = busDat;
     }
   
-    arr.forEach(function(elem, index) {
+    dispBus.forEach(function(elem, index) {
       let row = `
       <tr>
       <td>${index+1}</td>
       <td>${elem.name}</td>
       <td>${elem.source}</td>
       <td>${elem.destination}</td>
-      <td>${elem.busNum}</td>
-      <td>${elem.busCap}</td>
+      <td>${elem.number}</td>
+      <td>${elem.capacity}</td>
       <td><button onclick="deleteR(${index})" class="del">delete</button>
       </td>
       </tr>`;
-        dispBus += row;
+        arr += row;
+        
+        
     });
 
-    document.getElementsByClassName("tableDat")[0].innerHTML = dispBus;
+    document.getElementById("tableDat").innerHTML = arr;
 }
 
-display(busArr1);
-
 function insertB(e) {
-    e.preventDefault();
+    e.preventDefault()  
     let bus = {};
-    let name = document.getElementById("name").value;
-    let source = document.getElementById("source").value;
-    let dest = document.getElementById("destin").value;
-    let num = document.getElementById("bno").value;
-    let passcap = document.getElementById("pass").value;
  
-   bus.name = name;
-   bus.source=source;
-   bus.destination=dest;
-   bus.busNum=num;
-   bus.busCap=passcap;
+   bus.name = document.getElementById("name").value;
+   bus.source= document.getElementById("source").value;
+   bus.destination= document.getElementById("destin").value;
+   bus.number= document.getElementById("bno").value;
+   bus.capacity= document.getElementById("pass").value;
 
-   let newBus = JSON.parse(localStorage.getItem("busArr1"));
+   let newBus=JSON.parse(localStorage.getItem("busArr1"));
    newBus.push(bus);
-   localStorage.setItem("busArr1", JSON.stringify(newBus));
+   strbuses=JSON.stringify(newBus);
+   localStorage.setItem("busArr1",strbuses);
 
-    display(newBus);
-
+    let newbus1 = JSON.parse(localStorage.getItem("busArr1"));
+    display(newbus1);
     document.getElementById("name").value = "";
     document.getElementById("source").value = "";
     document.getElementById("destin").value = "";
     document.getElementById("bno").value = "";
     document.getElementById("pass").value = "";
-    
+
+
+
+    return false;
 }
 
+display();
 
 function searchs() {
     let srch = document.getElementById("search").value;
@@ -79,7 +77,7 @@ function searchs() {
         return (elem.source.toUpperCase().indexOf(srch.toUpperCase()) != -1)||
         (elem.destination.toUpperCase().indexOf(srch.toUpperCase()) != -1);
 
-    });
+    })
     display(filtarr);
 
 }
