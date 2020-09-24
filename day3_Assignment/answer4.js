@@ -1,30 +1,31 @@
 
-    let details=[
-        {name:"abc"},
-        {age:30},
-        {country:"India"},
-        {hobbies:["hacking","webdev","cybersec"]},
+   let details=[
+    {name:"arjun",
+    age:30,
+    country:"India",
+    hobbies:["hacking","coder","web"]},
 
-        {name:"xyz"},
-        {age:25},
-        {country:"Japan"},
-        {hobbies:["hacking","webdev","cybersec"]},
+    {name:"okazaki",
+    age:25,
+    country:"Japan",
+    hobbies:["electrician","playing with nagisa","daughter ushio"]},
 
-        {name:"rps"},
-        {age:20},
-        {country:"America"},
-        {hobbies:["hacking","webdev","cybersec"]},
+    {name:"billy",
+    age:20,
+    country:"America",
+    hobbies:["baking cake","batminton","carrom"]},
 
-        {name:"dfgh"},
-        {age:35},
-        {country:"NYC"},
-        {hobbies:["hacking","webdev","cybersec"]},
+    {name:"junaid",
+    age:40,
+    country:"India",
+    hobbies:["coder","animator","cybersecurity"]},
 
-        {name:"jkl"},
-        {age:40},
-        {country:"India"},
-        {hobbies:["hacking","webdev","cybersec"]},
-]
+    {name:"kaleem",
+    age:30,
+    country:"India",
+    hobbies:["coder","animator","cybersecurity"]},
+];
+
 details.forEach(function(details){
     console.log(details)
 });
@@ -38,7 +39,7 @@ for(let i=0;i<details.length;i++){
 }
 }
 
-console.log("Person who live in INDIA <30");
+console.log("Person who live in INDIA");
 
 for(let i=0;i<details.length;i++){
     if (details[i].country=="India"){
